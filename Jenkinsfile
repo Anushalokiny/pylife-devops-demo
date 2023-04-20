@@ -35,14 +35,12 @@ pipeline {
                
 
                 steps {
-                    withCredentials([string(credentialsId: 'DOCKERPWD', variable: 'DOCKER_TOKEN')]) {
+                   
+                    sh 'docker build . -t anushalokiny/app30:test
+                    sh 'docker login -u anushalokiny -p dckr_pat_5hqwwpAesEYjY3egx8qa8KmWa2Q'
+                    sh 'docker push anushalokiny/app30:test'
+                    sh 'docker run -p 99:8080 -d anushalokiny/app30:test'
 
-
-                    sh 'docker build . -t pylifedevops/app30:test'
-                    sh 'docker login -u pylifedevops -p ${DOCKER_TOKEN}'
-                    sh 'docker push pylifedevops/app30:test'
-                   // sh 'docker run -p 89:8080 -d pylifedevops/app30:test'
-                }
 
                 }
             
